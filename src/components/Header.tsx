@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaTimes, FaDownload } from "react-icons/fa";
+import { HiMenu } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -18,6 +19,8 @@ const Header: React.FC = () => {
   const [tracerX, setTracerX] = useState(0);
   const [tracerWidth, setTracerWidth] = useState(0);
   const [showTracer, setShowTracer] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const navRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -33,8 +36,8 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY + window.innerHeight / 2;
-
       const hero = document.getElementById("hero");
+
       if (
         hero &&
         hero.offsetTop <= scrollY &&
@@ -80,13 +83,13 @@ const Header: React.FC = () => {
       const offset = window.innerHeight / 2 - el.clientHeight / 2;
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: "smooth" });
+      setMobileMenuOpen(false); // close on mobile nav click
     }
   };
 
   const handleHover = (e: React.MouseEvent) => {
     const navRect = navRef.current?.getBoundingClientRect();
     if (!navRect || !navRef.current) return;
-
     const x = e.clientX - navRect.left;
     setHoverX(x);
 
@@ -99,13 +102,11 @@ const Header: React.FC = () => {
     if (hoveredButton) {
       setTracerWidth(hoveredButton.offsetWidth);
     } else {
-      setTracerWidth(64); // fallback default width
+      setTracerWidth(64);
     }
   };
 
-  const handleLeave = () => {
-    setHoverX(null);
-  };
+  const handleLeave = () => setHoverX(null);
 
   return (
     <>
@@ -116,7 +117,7 @@ const Header: React.FC = () => {
             : "bg-gray-900/60 backdrop-blur-sm"
         }`}
       >
-        <nav className="relative w-full flex flex-wrap items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 py-4">
+        <nav className="relative w-full flex items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <span
             className="text-blue-400 font-medium text-[1.55rem] cursor-pointer hover:text-blue-300 transition"
             onClick={() => scrollToSection("hero")}
@@ -124,9 +125,19 @@ const Header: React.FC = () => {
             VM.
           </span>
 
+          {/* Hamburger for Mobile */}
+          <button
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="md:hidden text-blue-400 text-3xl"
+            aria-label="Toggle Menu"
+          >
+            <HiMenu />
+          </button>
+
+          {/* Desktop Navigation */}
           <ul
             ref={navRef}
-            className="relative flex gap-8 text-[1.25rem] font-medium"
+            className="hidden md:flex gap-8 text-[1.25rem] font-medium"
             onMouseMove={handleHover}
             onMouseLeave={handleLeave}
           >
@@ -134,11 +145,14 @@ const Header: React.FC = () => {
               <li key={label}>
                 <button
                   data-id={target}
-                  onClick={() =>
-                    target === "resume"
-                      ? setShowResume(true)
-                      : scrollToSection(target)
-                  }
+                  onClick={() => {
+                    if (target === "resume") {
+                      setMobileMenuOpen(false);
+                      setShowResume(true);
+                    } else {
+                      scrollToSection(target);
+                    }
+                  }}
                   className={`text-blue-300 cursor-pointer hover:text-blue-400 transition-colors duration-200 ${
                     activeLink === target ? "text-blue-400" : ""
                   }`}
@@ -148,7 +162,6 @@ const Header: React.FC = () => {
               </li>
             ))}
 
-            {/* Tracer Line */}
             {(showTracer || hoverX !== null) && (
               <motion.div
                 className="absolute bottom-0 h-[2px] bg-gradient-to-r from-blue-400 to-purple-500 rounded"
@@ -161,6 +174,36 @@ const Header: React.FC = () => {
             )}
           </ul>
         </nav>
+
+        {/* Mobile Menu Panel */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden px-6 py-4 bg-gray-800 border-t border-gray-700 text-white text-lg space-y-4"
+            >
+              {navLinks.map(({ label, target }) => (
+                <button
+                  key={label}
+                  onClick={() => {
+                    if (target === "resume") {
+                      setMobileMenuOpen(false);
+                      setShowResume(true);
+                    } else {
+                      scrollToSection(target);
+                    }
+                  }}
+                  className="block w-full text-left text-blue-300 hover:text-blue-400 transition"
+                >
+                  {label}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Resume Modal */}
@@ -198,7 +241,6 @@ const Header: React.FC = () => {
                   <FaTimes />
                 </button>
               </div>
-
               <iframe
                 src="/resume.pdf"
                 className="w-full h-[80vh] mt-8 rounded-md"

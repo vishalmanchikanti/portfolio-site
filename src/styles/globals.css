@@ -5,15 +5,15 @@
   --foreground: #171717;
 }
 
-html,
-body {
-  background-color: #111827; /* Tailwind's gray-900 */
-  color: white;
+html, body {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+  background-color: #111827;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  overflow-x: hidden;
-}
 
 @media (prefers-color-scheme: dark) {
   :root {

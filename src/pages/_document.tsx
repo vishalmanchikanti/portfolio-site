@@ -5,11 +5,8 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <title>Vishal Manchikanti | Portfolio</title>
-        <meta
-          name="description"
-          content="Full-stack developer portfolio built with Next.js"
-        />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#111827" />
       </Head>
       <body className="antialiased">
         <Main />

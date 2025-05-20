@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className={`${inter.className} w-full text-white flex flex-col md:flex-row items-center justify-center px-8 py-20 md:py-32`}
+      className={`${inter.className} w-full text-white flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-8 pt-28 md:py-32`}
     >
       {/* LEFT: Image + Contact Icons */}
       <div className="flex flex-col items-center justify-center w-[280px] space-y-6 mb-8 md:mb-0 md:mr-12">
