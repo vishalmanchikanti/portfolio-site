@@ -110,13 +110,13 @@ const Header: React.FC = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
+        className={`fixed top-0 left-0 z-50 w-full bg-gray-900 transition-colors duration-300 ${
           scrolled
             ? "bg-gray-900/95 shadow-md"
             : "bg-gray-900/60 backdrop-blur-sm"
         }`}
       >
-        <nav className="relative flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
+        <nav className="relative w-full flex flex-wrap items-center justify-between max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <span
             className="text-blue-400 font-medium text-[1.55rem] cursor-pointer hover:text-blue-300 transition"
             onClick={() => scrollToSection("hero")}
