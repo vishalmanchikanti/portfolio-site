@@ -19,13 +19,13 @@ const About: React.FC = () => {
       </h2>
 
       <p className="text-lg leading-relaxed text-gray-300">
-        I'm a dedicated
+        I&apos;m a dedicated
         <span className="text-emerald-400 font-semibold">
           {" "}
           full-stack developer
-        </span>{" "}
-        with a Master’s degree in Computer Science from Texas Tech University. I
-        take pride in building
+        </span>
+        with a Master&apos;s degree in Computer Science from Texas Tech
+        University. I take pride in building
         <span className="text-emerald-400 font-semibold"> scalable</span> and
         <span className="text-emerald-400 font-semibold"> modern</span> web
         applications that are optimized for performance and maintainability.
@@ -36,10 +36,7 @@ const About: React.FC = () => {
         <span className="text-emerald-400 font-semibold"> Next.js</span>, and
         <span className="text-emerald-400 font-semibold"> TypeScript</span>,
         styled with
-        <span className="text-emerald-400 font-semibold">
-          {" "}
-          Tailwind CSS
-        </span>{" "}
+        <span className="text-emerald-400 font-semibold"> Tailwind CSS</span>
         for rapid and responsive design. On the backend, I build robust APIs
         with
         <span className="text-emerald-400 font-semibold"> FastAPI</span> and
@@ -50,7 +47,7 @@ const About: React.FC = () => {
         manage data effectively.
         <br />
         <br />
-        I’m passionate about solving
+        I&apos;m passionate about solving
         <span className="text-emerald-400 font-semibold">
           {" "}
           real-world challenges
@@ -63,7 +60,7 @@ const About: React.FC = () => {
         <span className="text-emerald-400 font-semibold">
           {" "}
           emerging technologies
-        </span>{" "}
+        </span>
         through continuous learning and
         <span className="text-emerald-400 font-semibold">
           {" "}

@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Link } from "react-scroll";
 
@@ -9,7 +8,6 @@ import WorkHistory from "../components/WorkHistory";
 import Projects from "../components/Project";
 import Skills from "../components/Skills";
 import Hero from "../components/herosection";
-import Contact from "../components/Contact";
 import Footer from "../components/footer";
 
 const geistSans = Geist({
@@ -26,29 +24,29 @@ export default function Home() {
   return (
     <div
       id="top"
-      className={`${geistSans.className} ${geistMono.className} min-h-screen flex flex-col justify-between font-[family-name:var(--font-geist-sans)]`}
+      className={`${geistSans.className} ${geistMono.className} min-h-screen flex flex-col justify-between font-[var(--font-geist-sans)]`}
     >
       {/* Header */}
       <Header />
+
       {/* Sections */}
-      <section id="hero" scroll-mt-32>
+      <section id="hero">
         <Hero />
       </section>
-      <section id="about" scroll-mt-24>
+      <section id="about">
         <About />
       </section>
-      <section id="skills" scroll-mt-24>
+      <section id="skills">
         <Skills />
       </section>
-      <section id="work-history" scroll-mt-24>
+      <section id="work-history">
         <WorkHistory />
       </section>
-      <section id="projects" scroll-mt-24>
+      <section id="projects">
         <Projects />
       </section>
       <Footer />
 
-      {/* <footer id="contact"><footer /></footer> */}
       <div id="bottom" />
 
       {/* Scroll Buttons */}

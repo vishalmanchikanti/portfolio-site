@@ -8,7 +8,9 @@ import { motion, AnimatePresence } from "framer-motion";
 const inter = Inter({ subsets: ["latin"] });
 
 const Hero: React.FC = () => {
-  const [modalType, setModalType] = useState<"phone" | "email" | "linkedin" | null>(null);
+  const [modalType, setModalType] = useState<
+    "phone" | "email" | "linkedin" | null
+  >(null);
 
   const phoneNumber = "+1 806-544-0857";
   const email = "vishalmanchikanti3101@gmail.com";
@@ -23,10 +25,10 @@ const Hero: React.FC = () => {
     let href = "";
 
     if (modalType === "phone") {
-      label = "Call Me 📞";
+      label = "Call 📞";
       value = phoneNumber;
     } else if (modalType === "email") {
-      label = "Email Me ✉️";
+      label = "Send an Email ✉️";
       value = email;
       buttonText = "Open Email";
       href = `mailto:${email}`;
@@ -83,11 +85,11 @@ const Hero: React.FC = () => {
       className={`${inter.className} w-full text-white flex flex-col md:flex-row items-center justify-center px-8 py-20 md:py-32`}
     >
       {/* LEFT: Image + Contact Icons */}
-      <div className="flex flex-col items-center justify-center w-[7cm] space-y-6 mb-8 md:mb-0 md:mr-12">
-        <div className="w-[7cm] h-[7cm] rounded-full overflow-hidden shadow-lg">
+      <div className="flex flex-col items-center justify-center w-[280px] space-y-6 mb-8 md:mb-0 md:mr-12">
+        <div className="w-[280px] h-[280px] rounded-full overflow-hidden shadow-lg">
           <Image
             src="/images/profile.jpeg"
-            alt="Profile Picture"
+            alt="Vishal Manchikanti profile photo"
             width={264}
             height={264}
             className="object-cover w-full h-full"
@@ -95,13 +97,25 @@ const Hero: React.FC = () => {
         </div>
 
         <div className="flex justify-center gap-6 text-2xl text-emerald-400">
-          <button onClick={() => setModalType("phone")} className="hover:text-emerald-300 cursor-pointer transition" title="Call Me">
+          <button
+            onClick={() => setModalType("phone")}
+            className="hover:text-emerald-300 cursor-pointer transition"
+            title="Call Me"
+          >
             <FaPhoneAlt />
           </button>
-          <button onClick={() => setModalType("email")} className="hover:text-emerald-300 cursor-pointer transition" title="Email">
+          <button
+            onClick={() => setModalType("email")}
+            className="hover:text-emerald-300 cursor-pointer transition"
+            title="Email"
+          >
             <FaEnvelope />
           </button>
-          <button onClick={() => setModalType("linkedin")} className="hover:text-emerald-300 cursor-pointer transition" title="LinkedIn">
+          <button
+            onClick={() => setModalType("linkedin")}
+            className="hover:text-emerald-300 cursor-pointer transition"
+            title="LinkedIn"
+          >
             <FaLinkedin />
           </button>
         </div>
@@ -110,7 +124,7 @@ const Hero: React.FC = () => {
       {/* RIGHT: Intro */}
       <div className="flex flex-col items-start text-left max-w-xl space-y-6">
         <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight tracking-tight">
-          Hi, I'm <br />
+          Hi, I&apos;m <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
             Vishal Manchikanti
           </span>
@@ -137,12 +151,19 @@ const Hero: React.FC = () => {
           <span className="text-blue-400 font-semibold"> scalable </span>
           and
           <span className="text-purple-400 font-semibold"> modern </span>
-          web applications. I'm passionate about solving
-          <span className="text-blue-300 font-medium"> real-world problems</span>,
-          exploring
-          <span className="text-purple-300 font-medium"> new technologies</span>,
-          and contributing to
-          <span className="text-indigo-300 font-medium"> open-source communities</span>.
+          web applications. I&apos;m passionate about solving
+          <span className="text-blue-300 font-medium">
+            {" "}
+            real-world problems
+          </span>
+          , exploring
+          <span className="text-purple-300 font-medium"> new technologies</span>
+          , and contributing to
+          <span className="text-indigo-300 font-medium">
+            {" "}
+            open-source communities
+          </span>
+          .
         </p>
       </div>
 

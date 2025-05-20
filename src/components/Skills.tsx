@@ -5,7 +5,6 @@ import {
   FaDocker,
   FaAws,
   FaPython,
-  FaDatabase,
 } from "react-icons/fa";
 import { SiNextdotjs, SiPostgresql, SiTailwindcss, SiTypescript, SiMongodb, SiFastapi } from "react-icons/si";
 

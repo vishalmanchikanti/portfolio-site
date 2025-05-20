@@ -2,8 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaTimes, FaDownload } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
+const navLinks = [
+  { label: "About", target: "about" },
+  { label: "Skills", target: "skills" },
+  { label: "Experience", target: "work-history" },
+  { label: "Projects", target: "projects" },
+  { label: "Resume", target: "resume" },
+];
+
 const Header: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled] = useState(false);
   const [showResume, setShowResume] = useState(false);
   const [activeLink, setActiveLink] = useState<string | null>(null);
   const [hoverX, setHoverX] = useState<number | null>(null);
@@ -12,18 +20,13 @@ const Header: React.FC = () => {
   const [showTracer, setShowTracer] = useState(false);
   const navRef = useRef<HTMLUListElement>(null);
 
-  const navLinks = [
-    { label: "About", target: "about" },
-    { label: "Skills", target: "skills" },
-    { label: "Experience", target: "work-history" },
-    { label: "Projects", target: "projects" },
-    { label: "Resume", target: "resume" },
-  ];
-
-    // ✅ Prevent default browser scroll-to-anchor
   useEffect(() => {
     if (window.location.hash) {
-      history.replaceState(null, document.title, window.location.pathname + window.location.search);
+      history.replaceState(
+        null,
+        document.title,
+        window.location.pathname + window.location.search
+      );
     }
   }, []);
 
@@ -32,7 +35,11 @@ const Header: React.FC = () => {
       const scrollY = window.scrollY + window.innerHeight / 2;
 
       const hero = document.getElementById("hero");
-      if (hero && hero.offsetTop <= scrollY && scrollY < hero.offsetTop + hero.offsetHeight) {
+      if (
+        hero &&
+        hero.offsetTop <= scrollY &&
+        scrollY < hero.offsetTop + hero.offsetHeight
+      ) {
         setShowTracer(false);
         setActiveLink(null);
       } else {
@@ -56,7 +63,9 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     if (!navRef.current || !activeLink) return;
-    const el = navRef.current.querySelector(`[data-id="${activeLink}"]`) as HTMLElement;
+    const el = navRef.current.querySelector(
+      `[data-id="${activeLink}"]`
+    ) as HTMLElement;
     if (el) {
       const rect = el.getBoundingClientRect();
       const navLeft = navRef.current.getBoundingClientRect().left;
@@ -71,24 +80,40 @@ const Header: React.FC = () => {
       const offset = window.innerHeight / 2 - el.clientHeight / 2;
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: "smooth" });
-      // No need to setActiveLink manually
     }
   };
 
   const handleHover = (e: React.MouseEvent) => {
-    const rect = navRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    const x = e.clientX - rect.left;
+    const navRect = navRef.current?.getBoundingClientRect();
+    if (!navRect || !navRef.current) return;
+
+    const x = e.clientX - navRect.left;
     setHoverX(x);
+
+    const buttons = Array.from(navRef.current.querySelectorAll("button"));
+    const hoveredButton = buttons.find((btn) => {
+      const rect = btn.getBoundingClientRect();
+      return e.clientX >= rect.left && e.clientX <= rect.right;
+    }) as HTMLElement | undefined;
+
+    if (hoveredButton) {
+      setTracerWidth(hoveredButton.offsetWidth);
+    } else {
+      setTracerWidth(64); // fallback default width
+    }
   };
 
-  const handleLeave = () => setHoverX(null);
+  const handleLeave = () => {
+    setHoverX(null);
+  };
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-          scrolled ? "bg-gray-900/95 shadow-md" : "bg-gray-900/60 backdrop-blur-sm"
+          scrolled
+            ? "bg-gray-900/95 shadow-md"
+            : "bg-gray-900/60 backdrop-blur-sm"
         }`}
       >
         <nav className="relative flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
@@ -99,7 +124,6 @@ const Header: React.FC = () => {
             VM.
           </span>
 
-          {/* Navigation */}
           <ul
             ref={navRef}
             className="relative flex gap-8 text-[1.25rem] font-medium"
@@ -115,7 +139,7 @@ const Header: React.FC = () => {
                       ? setShowResume(true)
                       : scrollToSection(target)
                   }
-                  className={`text-blue-300 hover:text-blue-400 transition-colors duration-200 ${
+                  className={`text-blue-300 cursor-pointer hover:text-blue-400 transition-colors duration-200 ${
                     activeLink === target ? "text-blue-400" : ""
                   }`}
                 >
@@ -125,7 +149,7 @@ const Header: React.FC = () => {
             ))}
 
             {/* Tracer Line */}
-            {showTracer && activeLink && (
+            {(showTracer || hoverX !== null) && (
               <motion.div
                 className="absolute bottom-0 h-[2px] bg-gradient-to-r from-blue-400 to-purple-500 rounded"
                 animate={{
@@ -157,7 +181,6 @@ const Header: React.FC = () => {
               transition={{ duration: 0.3 }}
               className="bg-gray-900 p-6 rounded-lg max-w-4xl w-full relative shadow-xl"
             >
-              {/* Close & Download */}
               <div className="absolute top-3 right-4 flex gap-4 text-white text-xl">
                 <a
                   href="/resume.pdf"
@@ -176,7 +199,6 @@ const Header: React.FC = () => {
                 </button>
               </div>
 
-              {/* Embedded Resume */}
               <iframe
                 src="/resume.pdf"
                 className="w-full h-[80vh] mt-8 rounded-md"
