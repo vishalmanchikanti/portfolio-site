@@ -120,13 +120,13 @@ const Hero: React.FC = () => {
 
       {/* RIGHT: Intro */}
       <div className="flex flex-col items-start md:items-start text-left md:text-left text-center w-full max-w-xl space-y-6">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-black dark:text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
             Hi, I&apos;m <br /> Vishal Manchikanti
           </span>
         </h1>
 
-        <h2 className="text-xl sm:text-2xl text-black dark:text-blue-300">
+        <h2 className="text-xl sm:text-2xl text-gray-500 dark:text-blue-300">
           <Typewriter
             words={[
               "Full-Stack Developer",
@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
           />
         </h2>
 
-        <p className="text-lg sm:text-xl leading-relaxed text-black dark:text-gray-500">
+        <p className="text-lg sm:text-xl leading-relaxed text-gray-500 dark:text-gray-500">
           I specialize in building
           <span className="text-blue-600 dark:text-blue-400 font-semibold">
             {" "}
