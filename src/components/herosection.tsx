@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className={`${inter.className} w-full text-white flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-8 pt-28 md:py-32`}
+      className={`${inter.className} w-full text-black dark:text-white flex flex-col md:flex-row items-center justify-center px-4 sm:px-6 md:px-8 pt-28 md:py-32`}
     >
       {/* LEFT: Image + Contact Icons */}
       <div className="flex flex-col items-center justify-center w-[280px] space-y-6 mb-8 md:mb-0 md:mr-12">
@@ -99,22 +99,19 @@ const Hero: React.FC = () => {
         <div className="flex justify-center gap-6 text-2xl text-emerald-400">
           <button
             onClick={() => setModalType("phone")}
-            className="hover:text-emerald-300 cursor-pointer transition"
-            title="Call Me"
+            className="hover:text-emerald-300 transition"
           >
             <FaPhoneAlt />
           </button>
           <button
             onClick={() => setModalType("email")}
-            className="hover:text-emerald-300 cursor-pointer transition"
-            title="Email"
+            className="hover:text-emerald-300 transition"
           >
             <FaEnvelope />
           </button>
           <button
             onClick={() => setModalType("linkedin")}
-            className="hover:text-emerald-300 cursor-pointer transition"
-            title="LinkedIn"
+            className="hover:text-emerald-300 transition"
           >
             <FaLinkedin />
           </button>
@@ -122,15 +119,14 @@ const Hero: React.FC = () => {
       </div>
 
       {/* RIGHT: Intro */}
-      <div className="flex flex-col items-start text-left max-w-xl space-y-6">
-        <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight tracking-tight">
-          Hi, I&apos;m <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-            Vishal Manchikanti
+      <div className="flex flex-col items-start md:items-start text-left md:text-left text-center w-full max-w-xl space-y-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-black dark:text-white">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+            Hi, I&apos;m <br /> Vishal Manchikanti
           </span>
         </h1>
 
-        <h2 className="text-xl sm:text-2xl text-blue-300">
+        <h2 className="text-xl sm:text-2xl text-black dark:text-blue-300">
           <Typewriter
             words={[
               "Full-Stack Developer",
@@ -146,20 +142,29 @@ const Hero: React.FC = () => {
           />
         </h2>
 
-        <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+        <p className="text-lg sm:text-xl text-black dark:text-gray-300 leading-relaxed">
           I specialize in building
-          <span className="text-blue-400 font-semibold"> scalable </span>
+          <span className="text-blue-600 dark:text-blue-400 font-semibold">
+            {" "}
+            scalable{" "}
+          </span>
           and
-          <span className="text-purple-400 font-semibold"> modern </span>
+          <span className="text-purple-600 dark:text-purple-400 font-semibold">
+            {" "}
+            modern{" "}
+          </span>
           web applications. I&apos;m passionate about solving
-          <span className="text-blue-300 font-medium">
+          <span className="text-blue-600 dark:text-blue-300 font-medium">
             {" "}
             real-world problems
           </span>
           , exploring
-          <span className="text-purple-300 font-medium"> new technologies</span>
+          <span className="text-purple-600 dark:text-purple-300 font-medium">
+            {" "}
+            new technologies
+          </span>
           , and contributing to
-          <span className="text-indigo-300 font-medium">
+          <span className="text-indigo-600 dark:text-indigo-300 font-medium">
             {" "}
             open-source communities
           </span>
@@ -167,7 +172,6 @@ const Hero: React.FC = () => {
         </p>
       </div>
 
-      {/* Modals */}
       <AnimatePresence>
         {modalType && (
           <motion.div

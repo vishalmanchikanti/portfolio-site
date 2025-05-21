@@ -12,7 +12,7 @@ const About: React.FC = () => {
       id="about"
       className={`${inter.className} w-full max-w-4xl mx-auto px-6 py-20`}
     >
-      <h2 className="text-6xl sm:text-5xl text-center mb-6 font-extrabold leading-tight tracking-tight">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-extrabold mb-6 tracking-tight leading-tight">
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
           Know About Me...
         </span>
@@ -22,9 +22,9 @@ const About: React.FC = () => {
         I&apos;m a dedicated
         <span className="text-emerald-400 font-semibold">
           {" "}
-          full-stack developer
+          full-stack developer 
         </span>
-        with a Master&apos;s degree in Computer Science from Texas Tech
+         with a Master&apos;s degree in Computer Science from Texas Tech
         University. I take pride in building
         <span className="text-emerald-400 font-semibold"> scalable</span> and
         <span className="text-emerald-400 font-semibold"> modern</span> web

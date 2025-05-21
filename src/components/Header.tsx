@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaTimes, FaDownload } from "react-icons/fa";
 import { HiMenu } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle"; // Make sure this file exists
 
 const navLinks = [
   { label: "About", target: "about" },
@@ -83,13 +84,14 @@ const Header: React.FC = () => {
       const offset = window.innerHeight / 2 - el.clientHeight / 2;
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: "smooth" });
-      setMobileMenuOpen(false); // close on mobile nav click
+      setMobileMenuOpen(false);
     }
   };
 
   const handleHover = (e: React.MouseEvent) => {
     const navRect = navRef.current?.getBoundingClientRect();
     if (!navRect || !navRef.current) return;
+
     const x = e.clientX - navRect.left;
     setHoverX(x);
 
@@ -125,14 +127,17 @@ const Header: React.FC = () => {
             VM.
           </span>
 
-          {/* Hamburger for Mobile */}
-          <button
-            onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="md:hidden text-blue-400 text-3xl"
-            aria-label="Toggle Menu"
-          >
-            <HiMenu />
-          </button>
+          {/* Mobile: Menu + Theme toggle */}
+          <div className="flex items-center gap-4 md:hidden">
+            <button
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className="text-blue-400 text-3xl"
+              aria-label="Toggle Menu"
+            >
+              <HiMenu />
+            </button>
+            <ThemeToggle />
+          </div>
 
           {/* Desktop Navigation */}
           <ul
@@ -142,7 +147,7 @@ const Header: React.FC = () => {
             onMouseLeave={handleLeave}
           >
             {navLinks.map(({ label, target }) => (
-              <li key={label}>
+              <li key={label} className="flex items-center gap-2">
                 <button
                   data-id={target}
                   onClick={() => {
@@ -159,6 +164,11 @@ const Header: React.FC = () => {
                 >
                   {label}
                 </button>
+                {label === "Resume" && (
+                  <div className="hidden md:block">
+                    <ThemeToggle />
+                  </div>
+                )}
               </li>
             ))}
 
@@ -183,7 +193,7 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden px-6 py-4 bg-gray-800 border-t border-gray-700 text-white text-lg space-y-4"
+              className="md:hidden px-6 py-4 bg-gray-800 border-t border-gray-700 text-white text-lg space-y-4 z-40"
             >
               {navLinks.map(({ label, target }) => (
                 <button

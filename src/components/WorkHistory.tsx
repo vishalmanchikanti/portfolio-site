@@ -29,7 +29,7 @@ const experiences: Experience[] = [
       "Docker",
       "AWS",
       "Jenkins",
-      "JUnit"
+      "JUnit",
     ],
     summary:
       "At LTI Mindtree, I developed backend APIs for enterprise-grade applications using Java and Spring Boot. I implemented RESTful services, optimized PostgreSQL queries, and containerized microservices with Docker. I participated in CI/CD pipeline creation using Jenkins and collaborated in Agile sprints to deliver tested, production-ready features. My role also included writing unit and integration tests, debugging service interactions, and ensuring scalable deployments on AWS. This experience enhanced my understanding of service-oriented architecture and backend reliability in high-traffic enterprise environments.",
@@ -41,7 +41,7 @@ const WorkHistory: React.FC = () => {
 
   return (
     <section id="work-history" className="w-full max-w-6xl mx-auto px-6 py-20">
-      <h2 className="text-6xl sm:text-5xl text-center mb-6 font-extrabold leading-tight tracking-tight">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-extrabold mb-6 tracking-tight leading-tight">
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
           Professional Experience
         </span>
