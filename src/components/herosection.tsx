@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
           </span>
         </h1>
 
-        <h2 className="text-xl sm:text-2xl text-blue-300 dark:text-blue-300">
+        <h2 className="text-xl sm:text-2xl text-blue-400 dark:text-blue-300">
           <Typewriter
             words={[
               "Full-Stack Developer",
@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
           />
         </h2>
 
-        <p className="text-lg sm:text-xl leading-relaxed text-gray-500 dark:text-gray-500">
+        <p className="text-lg sm:text-xl leading-relaxed text-gray-400 dark:text-gray-500">
           I specialize in building
           <span className="text-blue-600 dark:text-blue-400 font-semibold">
             {" "}
