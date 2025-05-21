@@ -21,7 +21,7 @@ const experiences: Experience[] = [
   {
     role: "Software Engineer Intern",
     company: "LTI Mindtree",
-    timeline: "May 2022 – Jun 2022",
+    timeline: "May 2022 – Jun 2023",
     stack: [
       "Java",
       "Spring Boot",
