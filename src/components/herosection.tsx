@@ -126,7 +126,7 @@ const Hero: React.FC = () => {
           </span>
         </h1>
 
-        <h2 className="text-xl sm:text-2xl text-gray-500 dark:text-blue-300">
+        <h2 className="text-xl sm:text-2xl text-blue-300 dark:text-blue-300">
           <Typewriter
             words={[
               "Full-Stack Developer",
