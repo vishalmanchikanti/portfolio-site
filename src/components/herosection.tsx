@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
           />
         </h2>
 
-        <p className="text-lg sm:text-xl text-black dark:text-white leading-relaxed">
+        <p className="text-lg sm:text-xl leading-relaxed text-black dark:text-gray-500">
           I specialize in building
           <span className="text-blue-600 dark:text-blue-400 font-semibold">
             {" "}

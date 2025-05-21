@@ -18,7 +18,7 @@ const About: React.FC = () => {
         </span>
       </h2>
 
-      <p className="text-lg leading-relaxed text-black dark:text-white">
+      <p className="text-lg leading-relaxed text-black dark:text-gray-500">
         I&apos;m a dedicated
         <span className="text-emerald-400 font-semibold">
           {" "}
