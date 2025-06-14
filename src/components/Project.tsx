@@ -28,6 +28,13 @@ const projects: Project[] = [
       "Created a developer-focused social platform with profile creation, post feeds, and real-time messaging. Utilized Firebase for authentication and storage, and Next.js for a highly responsive frontend. Designed to foster tech collaboration and open-source contributions.",
   },
   {
+    title: "Tic-Tac-Toe",
+    github: "https://github.com/vishalmanchikanti/tic-tac-toe-react",
+    stack: ["React", "HTML", "CSS", "Vite"],
+    summaryShort: "Responsive two player tic-tac-toe game using React .",
+    summaryLong: "This Tic-Tac-Toe project is a React and Vite-based web application featuring a responsive, two-player interface. It uses modular components, React Hooks, and clean CSS styling to manage game logic and UI. Deployed via GitHub Pages, it demonstrates effective front-end development practices and streamlined deployment for interactive browser-based gameplay.",
+  },
+  {
     title: "HealthBridge",
     github: "https://github.com/vishalmanchikanti/healthbridge",
     stack: ["React", "RabbitMQ", "FastAPI", "MongoDB"],
